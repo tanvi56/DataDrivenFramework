@@ -7,6 +7,7 @@
         <methods>
           <include name="endReport"/>
           <include name="createNewContact" invocation-numbers="0"/>
+          <include name="loginIntoApplication"/>
           <include name="afterTest"/>
         </methods>
       </class> <!-- com.datadriven.framework.test.LoginTest -->
