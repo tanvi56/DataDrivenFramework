@@ -225,6 +225,7 @@ public class BaseUI {
 
 		logger.log(Status.FAIL, reportString);
 		//takeScreenShotOnFailure();
+
 		Assert.fail(reportString);
 	}
 

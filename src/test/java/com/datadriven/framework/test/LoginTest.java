@@ -18,6 +18,7 @@ public class LoginTest extends BaseUI {
 		report.flush();
 	}
 		
+<<<<<<< HEAD
 	 ////////////////////////////////////////////
 	@Test(dataProvider = "getTestDataProviderLogin")
 	public void loginIntoApplication(Hashtable<String, String> dataTable) {
@@ -54,6 +55,44 @@ public class LoginTest extends BaseUI {
 		enterText("firstName_Name", dataTable.get("FirstName"));
 		enterText("lastName_Name", dataTable.get("LastName"));
 		enterText("company_Xpath", dataTable.get("Company"));
+=======
+	 
+	@Test(dataProvider = "getTestDataProviderLogin")
+	public void loginIntoApplication(Hashtable<String, String> dataTable) {
+
+		logger = report.createTest("Login Into CRM Application"+ dataTable.get("Username "));
+		
+		invokeBrowser("chrome");
+		openUrl("webURL");
+		elementClick("loginBtn_Xpath");
+		enterText("username_Name", dataTable.get("Username"));
+		enterText("password_Name", dataTable.get("Password"));
+		elementClick("login_Xpath");		
+		tearDown();
+	}
+	
+	@DataProvider 
+	public Object[][] getTestDataProviderLogin(){ 
+		 return TestDataProvider.getTestData("TestData.xlsx","credentials","Login Into CRM Application"); 
+	 }
+
+	@Test(dataProvider = "getTestDataProviderCreateContact")
+	public void createNewContact(Hashtable<String, String> dataTable) {
+
+		logger = report.createTest("create new contact"+ dataTable.get("Username "));
+		
+		invokeBrowser("chrome");
+		openUrl("webURL");
+		elementClick("loginBtn_Xpath");
+		enterText("username_Name",dataTable.get("Username") );
+		enterText("password_Name",dataTable.get("Password"));
+		elementClick("login_Xpath");
+		elementClick("contact_Xpath");
+		elementClick("createContact_Xpath");
+		enterText("firstName_Name", dataTable.get("FirstName"));
+		enterText("lastName_Name", dataTable.get("LastName"));
+		enterText("company_Xpath", dataTable.get("FIS"));
+>>>>>>> branch 'master' of https://github.com/tanvi56/DataDrivenFramework.git
 		enterText("emailAddress_Xpath", dataTable.get("Email"));
 		SelectElementInList("category_Name", dataTable.get("Category"));
 		elementClick("save_Xpath");
